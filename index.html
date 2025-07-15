@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search book title...">
+    <button onclick="searchBook()">Search</button>
+    </div>
+    <div class="user-icon" onclick="openProfilePopup()">
+    <img src="spongebob profile.png" alt="User Icon">
+  </div>
+</div>
+<!-- Pop-up Profil -->
+<div class="profile-popup" id="profilePopup">
+  <div class="popup-header">
+    <button onclick="closeProfilePopup()" class="close-popup-button">&times;</button>
+  </div>
+  <div class="profile-screen" id="profileMain">
+    <div class="profile-header">
+      <img src="spongebob profile.png" class="profile-img" id="profileImage" alt="profile Image" onclick="triggerImageUpload()">
+      <input type="file" id="imageUpload" accept="image/*" onchange="changeProfileImage()" style="display: none;" title="Upload Profile Image">
+      <h2 id="profileName">Your Name</h2>
+    </div>
+    <div class="profile-options">
+      <button onclick="showEditProfile()">Edit Profile</button>
+      <button onclick="showChangePassword()">Change Password</button>
+      <button class="sign-out" onclick="signOut()">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- Edit Profile Screen -->
+  <div class="profile-screen" id="editProfile" style="display: none;">
+    <div class="back-btn" onclick="backToMain()">←</div>
+    <h2>Edit Profile</h2>
+    <input type="text" id="editFullName" placeholder="Full Name">
+    <input type="text" id="editUsername" placeholder="Username">
+    <input type="email" id="editEmail" placeholder="Email">
+    <button onclick="saveProfile()">Save</button>
+  </div>
+
+  <!-- Change Password Screen -->
+  <div class="profile-screen" id="changePassword" style="display: none;">
+    <div class="back-btn" onclick="backToMain()">←</div>
+    <h2>Change Password</h2>
+    <input type="password" id="oldPassword" placeholder="Current Password">
+    <input type="password" id="newPassword" placeholder="New Password">
+    <button onclick="savePassword()">Save</button>
+  </div>
+</div>
+
+  
+<header>
+  <div class="header-content">
+    <h1>Welcome to the Digital Library</h1>
+    <p class="running-text">Your dream starts from the first page...</p>
+    
+  </div>
+  </div>
+</header>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="#" onclick="openPopup('exploreBooksPopup')">Explore Books</a></li>
+    <li><a href="#" onclick="openPopup('topBooksPopup')">Top Books</a></li>
+    <li><a href="#" onclick="openPopup('contactPopup')">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="recommendationSection">
+  <h2>Recommendation Books</h2>
+  <div id="recommendationBooks" class="book-grid"></div>
+</section>
+
+<!-- Ekspor Books Popup -->
+<div id="exploreBooksPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('exploreBooksPopup')">&times;</span>
+    <h2>Explore Books</h2>
+    <div id="exploreBooksList" class="book-grid"></div>
+  </div>
+</div>
+
+<!-- Top Books Popup -->
+<div id="topBooksPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('topBooksPopup')">&times;</span>
+    <h2>Top Books</h2>
+    <div id="topBooksList" class="book-grid"></div>
+  </div>
+</div>
+
+<!-- Contact Popup -->
+<div id="contactPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('contactPopup')">&times;</span>
+    <h2>Contact Us</h2>
+    <div class="social-icons">
+      <a href="https://wa.me/6281312277098" target="_blank"><img src="wa new.png" alt="WhatsApp"></a>
+      <a href="https://www.instagram.com/indry9190" target="_blank"><img src="ig new.png" alt="Instagram"></a>
+      <a href="https://t.me/Indrytias" target="_blank"><img src="telegram new.png" alt="Telegram"></a>
+    </div>
+  </div>
+</div>
+
+<!-- Book Read Popup -->
+<div id="bookPopup" class="popup">
+  <div class="popup-content popup-baca">
+    <h2 id="bookTitle"></h2>
+    <img id="bookCover" src="" alt="Book Cover" class="book-cover">
+    <p id="bookDescription"></p>
+    <button onclick="showStory()">Baca Buku</button>
+    <button onclick="closePopup('bookPopup')">Kembali</button>
+  </div>
+  
+  <!-- Pop Up cerita Buku -->
+   <div id="storyPopup" class="story-popup">
+    <div class="story-container">
+    <div id="storyContent">
+      <p id="storyText"></p>
+    </div>
+   </div>
+   <div class="story-buttons">
+    <button onclick="closeStory()">Kembali</button>
+    <button onclick="showSubscription()">Lanjutkan Membaca</button>
+   </div>
+  </div>
+ </div>
+
+ <!-- Popup Langganan -->
+  <div id="subscribePopup" class="story-popup">
+    <div class="story-container">
+      <h2>Pilih Metode Pembayaran</h2>
+      
+        <div class="story-container">
+          <a href="https://simm.ovo.id/login" target="_blank"><img src="ovo.jpg" alt="Ovo"></a>
+          <a href="https://auth.gopay.com/a/user" target="_blank"><img src="gopay icon.png" alt="Gopay"></a>
+          <a href="https://m.dana.id/m/ipg/new/inputPhone?phoneNumber=&ipgForwardUrl=%2Fm%2Fportal%2Foauth%3FclientId%3D2018080841488945368353%26scopes%3DDEFAULT_BASIC_PROFILE" target="_blank"><img src="dana icon.png" alt=""></a>
+        </div>
+        
+       
+        
+        
+      </select>
+      <p id="paymentNotife"></p>
+      <div class="story-buttons">
+        <button onclick="backToStart()">Kembali ke Awal</button>
+      </div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
